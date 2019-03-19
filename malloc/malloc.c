@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "lib.h"
-
+#include <string.h>
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -12,9 +12,13 @@
 */
 char *string_dup(char *src)
 {
-    char *p = malloc(sizeof(*src));
-    p = src;
-    return p;
+    int len = strlen(src);
+    char *dup = malloc(len);
+    for (int i = 0; i < len; i++) {
+        dup[i] = src[i];
+    }
+    dup[len] = '\0';
+    return dup;
 }
 
 /*
@@ -44,10 +48,15 @@ void mem_copy(void *dest, const void *src, int n)
     
     Do not use the `realloc` function from the standard libary.
 */
-// void *resize_memory(void *ptr, int old_size, int new_size)
-// {
-
-// }
+void *resize_memory(void *ptr, int old_size, int new_size)
+{
+    char *r = malloc(new_size);
+    char *p = (char*)ptr;
+    for (int i = 0; i < new_size; i++) {
+       r[i] = p[i]; 
+    }
+    return r;
+}
 
 #ifndef TESTING
 int main(void)
@@ -71,22 +80,22 @@ int main(void)
 
     printf("\n");
 
-    // char *url = string_dup("http://lambdaschool.com");
-    // char *path = string_dup("/students/");
-    // int url_length = string_length(url);
-    // int path_length = string_length(path);
+    char *url = string_dup("http://lambdaschool.com");
+    char *path = string_dup("/students/");
+    int url_length = string_length(url);
+    int path_length = string_length(path);
     
-    // int new_length = url_length - 1 + path_length;
-    // char *new_url = resize_memory(url, url_length, new_length);
-    // char *p = new_url + url_length;
+    int new_length = url_length - 1 + path_length;
+    char *new_url = resize_memory(url, url_length, new_length);
+    char *p = new_url + url_length;
 
-    // while (*path != '\0') {
-    //     *p = *path;
-    //     p++;
-    //     path++;
-    // }
+    while (*path != '\0') {
+        *p = *path;
+        p++;
+        path++;
+    }
 
-    // printf("Full path string: %s\n", new_url);
+    printf("Full path string: %s\n", new_url);
 
     return 0;
 }
