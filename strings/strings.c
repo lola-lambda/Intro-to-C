@@ -31,7 +31,7 @@ char *reverse_string(char rv[], char s[])
         rv[counterIndex] = s[i];
         counterIndex += 1;
     }
-    rv[counterIndex + 1] = '\0';
+    rv[counterIndex] = '\0';
     return rv;
 }
 
@@ -47,7 +47,6 @@ int main(void)
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
     printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
     printf("The string 'hello world' reversed is: '%s'\n", reverse_string(new, str1));
-    return 0;
 }
 #endif
     
