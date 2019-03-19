@@ -10,8 +10,7 @@
 int string_length(char s[])
 {
     int length = 0;
-    int lastChar = strlen(s);
-    for (int i = 0; i < lastChar; i++) {
+    for (int i = 0; s[i] != '\0'; i++) {
         length += 1;
     }
     return length;
