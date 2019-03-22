@@ -40,8 +40,8 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [X] fizzbuzz
   - [X] strings
   - [X] pointers
-  - [ ] malloc
-  - [ ] structs
+  - [X] malloc
+  - [X] structs
 
   **Stretch Goal Problems**
   - [ ] queue
